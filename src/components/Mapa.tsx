@@ -4,8 +4,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Definindo o ícone fora do componente para evitar re-renderizações desnecessárias
-// Usamos links da CDN do Leaflet para evitar erros de resolução de imagem do Next.js
+
 const defaultIcon = typeof window !== "undefined" ? L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
   iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",

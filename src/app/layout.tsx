@@ -40,7 +40,6 @@ export default function RootLayout({
           to-[#0f0218]
         `}
       >
-        {/* HEADER */}
         <header className="sticky top-0 z-50 border-b border-violet-900/40 bg-black/60 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
             <h1 className="flex items-center gap-2 text-lg font-semibold tracking-tight">

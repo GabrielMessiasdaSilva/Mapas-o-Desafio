@@ -4,7 +4,7 @@ import path from "path";
 const dbPath = path.join(process.cwd(), "database.sqlite");
 export const db = new Database(dbPath);
 
-// cria tabelas se não existirem
+// para criar as tabelas se não existirem
 db.exec(`
   CREATE TABLE IF NOT EXISTS mapas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

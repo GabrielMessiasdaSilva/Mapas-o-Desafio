@@ -83,7 +83,7 @@ export default function MapaPage() {
 
   return (
     <div className="flex h-screen bg-neutral-950 text-neutral-100">
-      {/* MAPA */}
+      {/* para adicionar o mapa */}
       <div className="relative flex-1">
         <Mapa pontos={pontos} onAddPoint={onAddPoint} />
 
@@ -94,9 +94,7 @@ export default function MapaPage() {
         )}
       </div>
 
-      {/* SIDEBAR */}
       <aside className="flex w-[380px] flex-col border-l border-neutral-800 bg-neutral-900">
-        {/* HEADER */}
         <div className="border-b border-neutral-800 px-6 py-5 space-y-3">
           <button
             onClick={() => router.push("/")}
@@ -114,7 +112,6 @@ export default function MapaPage() {
             </p>
           </div>
 
-          {/* BUSCA */}
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -123,7 +120,7 @@ export default function MapaPage() {
           />
         </div>
 
-        {/* NOVO PONTO */}
+        {/* para ter o novo ponto */}
         {novoPonto && (
           <div className="mx-4 mt-4 rounded-xl border border-violet-700/40 bg-violet-900/10 p-4">
             <h3 className="mb-3 font-medium text-violet-300">
