@@ -58,7 +58,7 @@ export default function RootLayout({
         </main>
 
         <footer className="border-t border-violet-900/30 py-6 text-center text-sm text-violet-300/60">
-          Feito com por Gabriel Messias para NerdMonster 
+          Feito por Gabriel Messias para NerdMonster 
         </footer>
       </body>
     </html>
