@@ -45,6 +45,12 @@ export default function MapaPage() {
     setNovoPonto({ lat, lng });
   }
 
+
+  function exportar(format: "geojson" | "csv") {
+  const url = `/api/mapas/export?mapaId=${mapaId}&format=${format}`;
+  window.open(url, "_blank");
+}
+
   async function salvarPonto() {
     if (!novoPonto || !nome.trim()) return;
 
@@ -83,7 +89,7 @@ export default function MapaPage() {
 
   return (
     <div className="flex h-screen bg-neutral-950 text-neutral-100">
-      {/* para adicionar o mapa */}
+      {/* MAPA */}
       <div className="relative flex-1">
         <Mapa pontos={pontos} onAddPoint={onAddPoint} />
 
@@ -94,7 +100,9 @@ export default function MapaPage() {
         )}
       </div>
 
+      {/* SIDEBAR */}
       <aside className="flex w-[380px] flex-col border-l border-neutral-800 bg-neutral-900">
+        {/* HEADER */}
         <div className="border-b border-neutral-800 px-6 py-5 space-y-3">
           <button
             onClick={() => router.push("/")}
@@ -112,6 +120,7 @@ export default function MapaPage() {
             </p>
           </div>
 
+          {/* BUSCA */}
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -120,7 +129,7 @@ export default function MapaPage() {
           />
         </div>
 
-        {/* para ter o novo ponto */}
+        {/* NOVO PONTO */}
         {novoPonto && (
           <div className="mx-4 mt-4 rounded-xl border border-violet-700/40 bg-violet-900/10 p-4">
             <h3 className="mb-3 font-medium text-violet-300">
@@ -156,7 +165,7 @@ export default function MapaPage() {
           </div>
         )}
 
-        {/* aplicando a lista */}
+        {/* LISTA */}
         <div className="flex-1 overflow-y-auto px-4 py-4">
           {pontosFiltrados.length === 0 ? (
             <div className="rounded-xl border border-dashed border-neutral-700 p-6 text-center text-sm text-neutral-400">
@@ -182,6 +191,27 @@ export default function MapaPage() {
             </ul>
           )}
         </div>
+
+<div className="border-t border-neutral-800 px-4 py-4 space-y-2">
+  <p className="text-xs uppercase tracking-wide text-neutral-400">
+    Exportar dados
+  </p>
+
+  <button
+    onClick={() => exportar("geojson")}
+    className="w-full rounded-lg border border-violet-500/40 bg-violet-500/10 py-2 text-sm text-violet-300 hover:bg-violet-500/20"
+  >
+    Exportar GeoJSON
+  </button>
+
+  <button
+    onClick={() => exportar("csv")}
+    className="w-full rounded-lg border border-neutral-700 py-2 text-sm text-neutral-300 hover:bg-neutral-800"
+  >
+    Exportar CSV
+  </button>
+</div>
+
 
         {pontos.length > 0 && (
           <div className="border-t border-neutral-800 px-4 py-4">
