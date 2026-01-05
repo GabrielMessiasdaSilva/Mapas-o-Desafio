@@ -24,13 +24,13 @@ O projeto **Meus Mapas** é uma aplicação full-stack que oferece uma interface
 ![Tela Inicial](./img/img1.png)
 
 ### Mapa Aberto
-![Mapa Aberto](./img/img2.png)
+![cadastro de mapas](./img/img2.png)
 
 ### Adicionando Novo Ponto
-![Adicionar Ponto](./img/img3.png.png)
+![Adicionar Ponto](./img/img3.png)
 
 ### Exportação de Dados
-![Exportação](./img/img4.png.png)
+![Exportação](./img/img4.png)
 
 
 ## 🛠️ Tecnologias Utilizadas
