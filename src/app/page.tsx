@@ -9,6 +9,16 @@ type Mapa = {
   total_pontos: number;
 };
 
+
+type Ponto = {
+  id?: number;
+  nome: string;
+  latitude: number;
+  longitude: number;
+  endereco?: string;
+  altitude?: number;
+};
+
 export default function Home() {
   const [mapas, setMapas] = useState<Mapa[]>([]);
 

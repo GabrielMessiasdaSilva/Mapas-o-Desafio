@@ -16,9 +16,8 @@ export async function GET() {
 export async function POST(req: Request) {
   const { nome } = await req.json();
 
-  db.prepare(
-    "INSERT INTO mapas (nome, criado_em) VALUES (?, ?)"
-  ).run(nome, new Date().toISOString());
+  db.prepare("INSERT INTO mapas (nome, criado_em) VALUES (?, ?)")
+    .run(nome, new Date().toISOString());
 
   return NextResponse.json({ ok: true });
 }
@@ -26,19 +25,10 @@ export async function POST(req: Request) {
 export async function DELETE(req: Request) {
   const { id } = await req.json();
 
-  if (!id) {
-    return new Response("ID inválido", { status: 400 });
-  }
+  if (!id) return new Response("ID inválido", { status: 400 });
 
-  // para apagar os pontos do mapa
-  db.prepare(
-    "DELETE FROM pontos WHERE mapa_id = ?"
-  ).run(id);
+  db.prepare("DELETE FROM pontos WHERE mapa_id = ?").run(id);
+  db.prepare("DELETE FROM mapas WHERE id = ?").run(id);
 
-  // para apagar o mapa
-  db.prepare(
-    "DELETE FROM mapas WHERE id = ?"
-  ).run(id);
-
-  return Response.json({ ok: true });
+  return NextResponse.json({ ok: true });
 }
