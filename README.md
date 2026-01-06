@@ -4,9 +4,13 @@ Uma plataforma web moderna e completa para gerenciamento de mapas geográficos c
 
 ![Tela Inicial](./img/img1.png)
 
-O deploy da aplicação já está disponível: https://mapasnerd.vercel.app
-Para testar, você pode usar o seguinte e-mail de teste: email@teste.com e senha : 12345678
+A aplicação já está disponível online: https://mapasnerd.vercel.app
 
+Para testar, use o seguinte login de teste:
+
+E-mail: email@teste.com
+
+Senha: 12345678
 ## 📋 Índice
 
 - [Sobre o Projeto](#-sobre-o-projeto)
