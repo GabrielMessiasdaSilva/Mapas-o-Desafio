@@ -459,20 +459,6 @@ npm run build
 npm start
 ```
 
-### Configuração no Vercel
-
-Ao fazer deploy no Vercel, configure a variável de ambiente para o compartilhamento via WhatsApp funcionar corretamente:
-
-1. Acesse as configurações do projeto no Vercel
-2. Vá em **Settings** → **Environment Variables**
-3. Adicione a variável:
-   - **Nome**: `NEXT_PUBLIC_APP_URL`
-   - **Valor**: A URL do seu deploy (ex: `https://meus-mapas.vercel.app`)
-4. Faça o redeploy da aplicação
-
-**Nota**: Se não configurar a variável, o sistema usará automaticamente a URL atual (que em produção será a URL do Vercel).
-
-
 
 ## 📄 Licença
  A construção desse projeto foi para um processo seletivo.
