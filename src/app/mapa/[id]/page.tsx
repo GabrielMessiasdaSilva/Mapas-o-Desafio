@@ -52,7 +52,10 @@ export default function MapaPage() {
   }
 
   function compartilharWhatsApp() {
-    const texto = `🗺️ Confira meu mapa com ${pontos.length} ponto${pontos.length !== 1 ? "s" : ""}!\n\n${window.location.href}`;
+    // Usa URL de produção se configurada, senão usa a URL atual (em produção será automaticamente a URL do Vercel)
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || (typeof window !== "undefined" ? window.location.origin : "");
+    const mapaUrl = `${baseUrl}/mapa/${mapaId}`;
+    const texto = `🗺️ Confira meu mapa com ${pontos.length} ponto${pontos.length !== 1 ? "s" : ""}!\n\n${mapaUrl}`;
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, "_blank");
   }

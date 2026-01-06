@@ -192,7 +192,7 @@ Mapas-o-Desafio/
 │   ├── img3.png
 │   └── img4.png
 ├── public/                           # Arquivos estáticos
-├── db.sqlite                         # Banco de dados SQLite (criado automaticamente)
+├── db.sqlite                         # Banco de dados SQLite 
 ├── package.json                      # Dependências e scripts
 ├── tsconfig.json                     # Configuração TypeScript
 ├── next.config.ts                    # Configuração Next.js
@@ -452,17 +452,23 @@ npm run build
 npm start
 ```
 
-A aplicação pode ser deployada em plataformas que suportam Node.js, como:
-- **Vercel** (recomendado para Next.js)
-- **Netlify**
-- **Railway**
-- **Heroku**
-- Qualquer servidor com Node.js
+### Configuração no Vercel
+
+Ao fazer deploy no Vercel, configure a variável de ambiente para o compartilhamento via WhatsApp funcionar corretamente:
+
+1. Acesse as configurações do projeto no Vercel
+2. Vá em **Settings** → **Environment Variables**
+3. Adicione a variável:
+   - **Nome**: `NEXT_PUBLIC_APP_URL`
+   - **Valor**: A URL do seu deploy (ex: `https://meus-mapas.vercel.app`)
+4. Faça o redeploy da aplicação
+
+**Nota**: Se não configurar a variável, o sistema usará automaticamente a URL atual (que em produção será a URL do Vercel).
+
+
 
 ## 📄 Licença
-
-Este projeto foi desenvolvido como parte de um processo de avaliação técnica.
-
+ A construção desse projeto foi para um processo seletivo.
 ---
 
 **Desenvolvido com tecnologias modernas: Next.js, React, TypeScript e Leaflet**
