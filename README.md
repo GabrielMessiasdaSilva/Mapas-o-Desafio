@@ -8,7 +8,7 @@ A aplicação já está disponível online: https://mapasnerd.vercel.app
 
 Para testar, use o seguinte login de teste:
 
-E-mail: email@teste.com
+E-mail: user@email.com
 
 Senha: 12345678
 ## 📋 Índice
