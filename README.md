@@ -4,9 +4,7 @@ Uma plataforma web moderna e completa para gerenciamento de mapas geográficos c
 
 ![Tela Inicial](./img/img1.png)
 
-A aplicação já está disponível online: https://mapasnerd.vercel.app
-
-Para testar, use o seguinte login de teste:
+Para testar, use o seguinte login de teste localmente use 
 
 E-mail: user@email.com
 
