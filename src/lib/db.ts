@@ -8,12 +8,24 @@ const dbPath = path.resolve("db.sqlite");
 if (!fs.existsSync(dbPath)) {
   const db = new Database(dbPath);
 
-  // Tabela mapas
+  db.prepare(`
+    CREATE TABLE usuarios (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT UNIQUE NOT NULL,
+      nome TEXT NOT NULL,
+      senha TEXT NOT NULL,
+      criado_em TEXT NOT NULL
+    )
+  `).run();
+
+  // Tabela mapas (agora com usuario_id)
   db.prepare(`
     CREATE TABLE mapas (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       nome TEXT NOT NULL,
-      criado_em TEXT NOT NULL
+      usuario_id INTEGER NOT NULL,
+      criado_em TEXT NOT NULL,
+      FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
     )
   `).run();
 

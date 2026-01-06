@@ -46,10 +46,16 @@ export default function MapaPage() {
   }
 
 
-  function exportar(format: "geojson" | "csv") {
-  const url = `/api/mapas/export?mapaId=${mapaId}&format=${format}`;
-  window.open(url, "_blank");
-}
+  function exportar(format: "geojson" | "csv" | "pdf") {
+    const url = `/api/mapas/export?mapaId=${mapaId}&format=${format}`;
+    window.open(url, "_blank");
+  }
+
+  function compartilharWhatsApp() {
+    const texto = `🗺️ Confira meu mapa com ${pontos.length} ponto${pontos.length !== 1 ? "s" : ""}!\n\n${window.location.href}`;
+    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank");
+  }
 
   async function salvarPonto() {
     if (!novoPonto || !nome.trim()) return;
@@ -210,6 +216,22 @@ export default function MapaPage() {
   >
     Exportar CSV
   </button>
+
+  <button
+    onClick={() => exportar("pdf")}
+    className="w-full rounded-lg border border-neutral-700 py-2 text-sm text-neutral-300 hover:bg-neutral-800"
+  >
+    Exportar PDF
+  </button>
+
+  {pontos.length > 0 && (
+    <button
+      onClick={compartilharWhatsApp}
+      className="w-full rounded-lg border border-green-500/40 bg-green-500/10 py-2 text-sm text-green-300 hover:bg-green-500/20 mt-2"
+    >
+      📱 Compartilhar no WhatsApp
+    </button>
+  )}
 </div>
 
 

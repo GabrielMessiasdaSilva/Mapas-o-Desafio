@@ -1,34 +1,57 @@
-import { db } from "@/lib/db";
+import { MapaService } from "@/services/MapaService";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const mapas = db
-    .prepare(`
-      SELECT m.*, 
-      (SELECT COUNT(*) FROM pontos p WHERE p.mapa_id = m.id) as total_pontos
-      FROM mapas m
-    `)
-    .all();
-
-  return NextResponse.json(mapas);
+  try {
+    const mapas = await MapaService.listarMapas();
+    return NextResponse.json(mapas);
+  } catch (error: any) {
+    return NextResponse.json(
+      { error: error.message || "Não autenticado" },
+      { status: 401 }
+    );
+  }
 }
 
 export async function POST(req: Request) {
-  const { nome } = await req.json();
+  try {
+    const { nome } = await req.json();
 
-  db.prepare("INSERT INTO mapas (nome, criado_em) VALUES (?, ?)")
-    .run(nome, new Date().toISOString());
+    if (!nome) {
+      return NextResponse.json(
+        { error: "Nome é obrigatório" },
+        { status: 400 }
+      );
+    }
 
-  return NextResponse.json({ ok: true });
+    await MapaService.criarMapa(nome);
+    return NextResponse.json({ ok: true });
+  } catch (error: any) {
+    return NextResponse.json(
+      { error: error.message || "Erro ao criar mapa" },
+      { status: 401 }
+    );
+  }
 }
 
 export async function DELETE(req: Request) {
-  const { id } = await req.json();
+  try {
+    const { id } = await req.json();
 
-  if (!id) return new Response("ID inválido", { status: 400 });
+    if (!id) {
+      return NextResponse.json(
+        { error: "ID inválido" },
+        { status: 400 }
+      );
+    }
 
-  db.prepare("DELETE FROM pontos WHERE mapa_id = ?").run(id);
-  db.prepare("DELETE FROM mapas WHERE id = ?").run(id);
-
-  return NextResponse.json({ ok: true });
+    await MapaService.excluirMapa(id);
+    return NextResponse.json({ ok: true });
+  } catch (error: any) {
+    const status = error.message.includes("permissão") ? 403 : 401;
+    return NextResponse.json(
+      { error: error.message || "Erro ao excluir mapa" },
+      { status }
+    );
+  }
 }

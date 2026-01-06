@@ -1,163 +1,134 @@
 # Meus Mapas
 
-Uma plataforma web moderna para visualizar, organizar e explorar mapas geográficos com pontos de interesse. Permite criar múltiplos mapas, adicionar pontos personalizados em cada um e gerenciar seus dados de forma intuitiva.
+Uma plataforma web moderna e completa para gerenciamento de mapas geográficos com pontos de interesse. Permite criar múltiplos mapas personalizados, adicionar pontos interativamente, gerenciar dados geográficos e exportar em diversos formatos.
 
-## 🎯 Visão Geral da Solução
-
-O projeto **Meus Mapas** é uma aplicação full-stack que oferece uma interface elegante e responsiva para gerenciamento de mapas geográficos. Desenvolvido com as tecnologias mais modernas do ecossistema JavaScript, permite que usuários criem mapas, adicionem pontos de interesse clicando diretamente no mapa e organizem seus dados geograficamente.
-
-### Principais Características
-
-- ✅ **Gerenciamento de Mapas**: Criar, visualizar e deletar mapas
-- ✅ **Pontos de Interesse**: Adicionar e remover pontos nos mapas com nomes personalizados
-- ✅ **Mapa Interativo**: Interface de mapa com Leaflet/OpenStreetMap
-- ✅ **Busca de Pontos**: Filtrar pontos por nome em tempo real
-- ✅ **Design Moderno**: Interface com gradientes, glassmorphism e animações suaves
-- ✅ **Persistência de Dados**: Banco de dados SQLite com sincronização automática
-
----
-
-
-## 🖼️ Screenshots do Projeto
-
-### Tela Inicial
 ![Tela Inicial](./img/img1.png)
 
-### Mapa Aberto
-![cadastro de mapas](./img/img2.png)
+## 📋 Índice
 
-### Adicionando Novo Ponto
-![Adicionar Ponto](./img/img3.png)
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Funcionalidades](#-funcionalidades)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Instalação e Execução](#-instalação-e-execução)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Screenshots](#-screenshots)
+- [Arquitetura](#-arquitetura)
+- [Banco de Dados](#-banco-de-dados)
+- [API Endpoints](#-api-endpoints)
+
+## 🎯 Sobre o Projeto
+
+**Meus Mapas** é uma aplicação full-stack desenvolvida para gerenciamento completo de mapas geográficos. A plataforma oferece uma interface intuitiva e moderna onde usuários podem criar mapas personalizados, adicionar pontos de interesse através de cliques interativos no mapa, gerenciar seus dados e exportar informações em múltiplos formatos.
+
+A solução implementa autenticação de usuários, garantindo que cada usuário tenha acesso exclusivo aos seus próprios mapas e pontos, proporcionando privacidade e organização dos dados.
+
+## ✨ Funcionalidades
+
+### Autenticação e Segurança
+- ✅ Sistema de registro e login de usuários
+- ✅ Autenticação baseada em sessões
+- ✅ Isolamento de dados por usuário
+- ✅ Hash de senhas com bcrypt
+
+### Gerenciamento de Mapas
+- ✅ Criar múltiplos mapas personalizados
+- ✅ Visualizar lista de mapas com contagem de pontos
+- ✅ Excluir mapas e todos os pontos associados
+- ✅ Navegação intuitiva entre mapas
+
+### Pontos Geográficos
+- ✅ Adicionar pontos clicando diretamente no mapa
+- ✅ Nomear pontos personalizados
+- ✅ Buscar pontos por nome em tempo real
+- ✅ Excluir pontos individuais ou em lote
+- ✅ Visualização de coordenadas (latitude/longitude)
+
+### Mapa Interativo
+- ✅ Mapa interativo usando Leaflet e OpenStreetMap
+- ✅ Zoom e navegação fluida
+- ✅ Marcadores visuais para cada ponto
+- ✅ Interface responsiva e moderna
 
 ### Exportação de Dados
-![Exportação](./img/img4.png)
+- ✅ **GeoJSON**: Formato padrão para dados geográficos
+- ✅ **CSV**: Planilha com todos os dados dos pontos
+- ✅ **PDF**: Documento formatado com tabela de pontos
 
+### Compartilhamento
+- ✅ Compartilhar mapas via WhatsApp
+- ✅ Link direto com mensagem pré-formatada
+- ✅ Integração com WhatsApp Web/App
 
 ## 🛠️ Tecnologias Utilizadas
 
 ### Frontend
-- **Next.js 16.1.1** - Framework React com SSR e otimizações automáticas
-- **React 19.2.3** - Biblioteca para construção de interfaces
+- **Next.js 16.1.1** - Framework React com App Router, SSR e otimizações automáticas
+- **React 19.2.3** - Biblioteca para construção de interfaces de usuário
 - **React Leaflet 5.0.0** - Componentes React para integração com mapas
 - **Leaflet 1.9.4** - Biblioteca JavaScript para mapas interativos
-- **Tailwind CSS 4** - Framework de CSS utilitário para estilização
-- **TypeScript 5** - Superset tipado do JavaScript
+- **Tailwind CSS 4** - Framework de CSS utilitário para estilização moderna
+- **TypeScript 5** - Superset tipado do JavaScript para type-safety
 
 ### Backend
-- **Next.js API Routes** - Backend serverless integrado
+- **Next.js API Routes** - Backend serverless integrado com rotas RESTful
 - **Better SQLite3 12.5.0** - Banco de dados SQL síncrono e de alta performance
+- **bcryptjs 3.0.3** - Biblioteca para hash de senhas com segurança
+
+### Exportação e Utilitários
+- **jsPDF 4.0.0** - Geração de documentos PDF no servidor
+- **OpenStreetMap** - Tiles de mapas gratuitos e abertos
 
 ### Ferramentas de Desenvolvimento
 - **ESLint 9** - Linter para código JavaScript/TypeScript
 - **Babel Plugin React Compiler** - Compilador otimizado para React
 
----
-
-## 📁 Estrutura de Arquivos
-
-```
-meus-mapas/
-├── src/
-│   ├── app/
-│   │   ├── page.tsx                 # Página inicial com listagem de mapas
-│   │   ├── layout.tsx               # Layout raiz com metadados
-│   │   ├── globals.css              # Estilos globais
-│   │   ├── mapa/[id]/
-│   │   │   └── page.tsx            # Página individual do mapa com editor de pontos
-│   │   └── api/
-│   │       ├── mapas/
-│   │       │   └── route.ts        # API para CRUD de mapas
-│   │       └── pontos/
-│   │           └── route.ts        # API para CRUD de pontos
-│   ├── components/
-│   │   └── Mapa.tsx                # Componente do mapa interativo Leaflet
-│   └── lib/
-│       └── db.ts                   # Configuração do banco de dados SQLite
-├── public/                          # Arquivos estáticos
-├── package.json                     # Dependências e scripts
-├── tsconfig.json                    # Configuração TypeScript
-├── next.config.ts                   # Configuração Next.js
-├── tailwind.config.ts               # Configuração Tailwind CSS
-├── postcss.config.mjs               # Configuração PostCSS
-├── eslint.config.mjs                # Configuração ESLint
-└── README.md                        # Este arquivo
-```
-
----
-
-## 🔍 Detalhamento dos Arquivos Principais
-
-### `src/app/page.tsx` - Página Principal
-- Exibe lista de todos os mapas criados
-- Mostra quantidade de pontos em cada mapa
-- Interface para criar novo mapa com input
-- Botões para deletar mapas com confirmação
-- Design com gradiente de fundo e animações suaves
-
-### `src/app/mapa/[id]/page.tsx` - Página do Mapa
-- Renderização do mapa interativo (Leaflet)
-- Interface lateral com funcionalidades:
-  - Campo de busca para filtrar pontos
-  - Lista de pontos com opções de deletar
-  - Botão para deletar todos os pontos
-  - Botão para voltar à página inicial
-- Modal para nomear novo ponto quando adicionado
-- Atualização dinâmica de pontos sem recarga de página
-
-### `src/components/Mapa.tsx` - Componente Mapa
-- Renderização do MapContainer do Leaflet
-- Integração com OpenStreetMap para tiles
-- Handler de cliques para adicionar pontos nas coordenadas selecionadas
-- Renderização de marcadores com ícones padrão
-- Centro inicial em São Paulo (latitude: -23.5, longitude: -46.6)
-
-### `src/app/api/mapas/route.ts` - API de Mapas
-Endpoints REST para gerenciar mapas:
-- **GET**: Retorna todos os mapas com contagem de pontos
-- **POST**: Cria novo mapa com nome e data de criação
-- **DELETE**: Deleta mapa e todos os seus pontos associados
-
-### `src/app/api/pontos/route.ts` - API de Pontos
-Endpoints REST para gerenciar pontos:
-- **GET**: Retorna pontos filtrados por mapaId
-- **POST**: Adiciona novo ponto em um mapa com coordenadas
-- **DELETE**: Deleta ponto individual ou todos os pontos de um mapa
-
-### `src/lib/db.ts` - Banco de Dados
-- Inicialização do SQLite3 com caminho absoluto
-- Criação automática das tabelas se não existirem:
-  - `mapas`: armazena informações dos mapas
-  - `pontos`: armazena coordenadas e nomes dos pontos
-- Configuração de chaves estrangeiras
-
----
-
-## 🚀 Como Executar
+## 🚀 Instalação e Execução
 
 ### Pré-requisitos
-- Node.js 18+ instalado
-- npm ou yarn como gerenciador de pacotes
+
+Antes de começar, certifique-se de ter instalado:
+
+- **Node.js** versão 18 ou superior
+- **npm** (geralmente vem com Node.js) ou **yarn**
 
 ### Passos para Execução
 
-1. **Instale as dependências:**
+1. **Clone o repositório** (se aplicável) ou navegue até a pasta do projeto:
+   ```bash
+   cd Mapas-o-Desafio
+   ```
+
+2. **Instale as dependências:**
    ```bash
    npm install
    ```
+   
+   Este comando instalará todas as dependências necessárias listadas no `package.json`.
 
-2. **Execute o servidor de desenvolvimento:**
+3. **Execute o servidor de desenvolvimento:**
    ```bash
    npm run dev
    ```
    
-   O servidor iniciará em `http://localhost:3000`
+   O servidor iniciará e estará disponível em `http://localhost:3000`
 
-3. **Abra no navegador:**
-   Acesse `http://localhost:3000` para usar a aplicação
+4. **Acesse a aplicação:**
+   
+   Abra seu navegador e acesse `http://localhost:3000`
+   
+   Na primeira execução, você será redirecionado para a página de registro.
 
-### Outros Scripts Disponíveis
+5. **Crie sua conta:**
+   - Acesse a página de registro
+   - Preencha nome, email e senha (mínimo 6 caracteres)
+   - Após o registro, você será autenticado automaticamente
+
+### Scripts Disponíveis
 
 ```bash
+# Desenvolvimento (com hot-reload)
+npm run dev
+
 # Build para produção
 npm run build
 
@@ -168,20 +139,141 @@ npm start
 npm run lint
 ```
 
----
+### Primeiro Uso
+
+1. **Registro**: Crie uma conta na página de registro
+2. **Login**: Faça login com suas credenciais
+3. **Criar Mapa**: Na página inicial, digite um nome e crie seu primeiro mapa
+4. **Adicionar Pontos**: Clique no mapa para adicionar pontos de interesse
+5. **Exportar**: Use os botões de exportação para baixar seus dados
+
+## 📁 Estrutura do Projeto
+
+```
+Mapas-o-Desafio/
+├── src/
+│   ├── app/                          # Next.js App Router
+│   │   ├── api/                      # API Routes
+│   │   │   ├── auth/                 # Autenticação
+│   │   │   │   ├── login/
+│   │   │   │   ├── registro/
+│   │   │   │   ├── logout/
+│   │   │   │   └── me/
+│   │   │   ├── mapas/                # CRUD de mapas
+│   │   │   │   ├── route.ts
+│   │   │   │   └── export/           # Exportação
+│   │   │   └── pontos/               # CRUD de pontos
+│   │   │       └── route.ts
+│   │   ├── login/                    # Página de login
+│   │   ├── registro/                 # Página de registro
+│   │   ├── mapa/[id]/                # Página do mapa
+│   │   ├── layout.tsx                 # Layout principal
+│   │   ├── page.tsx                  # Página inicial
+│   │   └── globals.css               # Estilos globais
+│   ├── components/                   # Componentes React
+│   │   ├── Mapa.tsx                  # Componente do mapa
+│   │   └── Navbar.tsx                # Barra de navegação
+│   ├── repositories/                  # Camada de acesso a dados
+│   │   ├── UsuarioRepository.ts
+│   │   ├── MapaRepository.ts
+│   │   └── PontoRepository.ts
+│   ├── services/                     # Camada de lógica de negócio
+│   │   ├── AuthService.ts
+│   │   ├── MapaService.ts
+│   │   └── PontoService.ts
+│   ├── types/                        # Definições TypeScript
+│   │   └── index.ts
+│   ├── lib/                          # Configurações
+│   │   └── db.ts                     # Configuração do banco
+│   └── middleware.ts                 # Middleware de autenticação
+├── img/                              # Screenshots do projeto
+│   ├── img1.png
+│   ├── img2.png
+│   ├── img3.png
+│   └── img4.png
+├── public/                           # Arquivos estáticos
+├── db.sqlite                         # Banco de dados SQLite (criado automaticamente)
+├── package.json                      # Dependências e scripts
+├── tsconfig.json                     # Configuração TypeScript
+├── next.config.ts                    # Configuração Next.js
+└── README.md                         # Este arquivo
+```
+
+## 🖼️ Screenshots
+
+### Tela Inicial - Lista de Mapas
+A página inicial exibe todos os mapas criados pelo usuário, com informações sobre a quantidade de pontos em cada mapa.
+
+![Tela Inicial](./img/img1.png)
+
+### Visualização do Mapa
+Interface completa com mapa interativo e painel lateral para gerenciamento de pontos.
+
+![Mapa Aberto](./img/img2.png)
+
+### Adicionando Novo Ponto
+Ao clicar no mapa, é possível adicionar um novo ponto e nomeá-lo através do formulário.
+
+![Adicionar Ponto](./img/img3.png)
+
+### Exportação de Dados
+Opções para exportar os dados do mapa em diferentes formatos (GeoJSON, CSV, PDF) e compartilhar via WhatsApp.
+
+![Exportação](./img/img4.png)
+
+## 🏗️ Arquitetura
+
+A aplicação segue uma arquitetura em camadas, separando responsabilidades de forma clara:
+
+### Camada de Repositories
+Responsável por todas as operações de acesso ao banco de dados:
+- `UsuarioRepository`: Operações CRUD de usuários
+- `MapaRepository`: Operações CRUD de mapas
+- `PontoRepository`: Operações CRUD de pontos
+
+### Camada de Services
+Contém a lógica de negócio e validações:
+- `AuthService`: Autenticação, login, registro e gerenciamento de sessões
+- `MapaService`: Lógica de mapas com validação de permissões
+- `PontoService`: Lógica de pontos com validação de permissões
+
+### Camada de API Routes
+Endpoints HTTP que recebem requisições e chamam os services apropriados.
+
+### Fluxo de Dados
+
+```
+Cliente → API Route → Service → Repository → Banco de Dados
+                ↓
+         Validações e
+         Lógica de Negócio
+```
 
 ## 💾 Banco de Dados
 
-O banco de dados SQLite é criado automaticamente na primeira execução em `database.sqlite` na raiz do projeto.
+O banco de dados SQLite é criado automaticamente na primeira execução do projeto. O arquivo `db.sqlite` será gerado na raiz do projeto.
 
 ### Schema das Tabelas
+
+**Tabela `usuarios`:**
+```sql
+CREATE TABLE usuarios (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT UNIQUE NOT NULL,
+  nome TEXT NOT NULL,
+  senha TEXT NOT NULL,
+  criado_em TEXT NOT NULL
+);
+```
 
 **Tabela `mapas`:**
 ```sql
 CREATE TABLE mapas (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nome TEXT NOT NULL,
-  criado_em TEXT NOT NULL
+  usuario_id INTEGER NOT NULL,
+  criado_em TEXT NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 ```
 
@@ -193,48 +285,164 @@ CREATE TABLE pontos (
   nome TEXT NOT NULL,
   latitude REAL NOT NULL,
   longitude REAL NOT NULL,
-  FOREIGN KEY (mapa_id) REFERENCES mapas(id)
+  endereco TEXT,
+  altitude REAL,
+  FOREIGN KEY (mapa_id) REFERENCES mapas(id) ON DELETE CASCADE
 );
 ```
 
----
+### Relacionamentos
 
-## 🎨 Design e UX
+- Um **usuário** pode ter múltiplos **mapas**
+- Um **mapa** pode ter múltiplos **pontos**
+- Exclusão em cascata: ao excluir um mapa, todos os pontos são excluídos automaticamente
+- Exclusão em cascata: ao excluir um usuário, todos os mapas e pontos são excluídos
 
-- **Tema Escuro**: Interface com fundo preto e tons neutros para menor canção ocular
-- **Gradientes Dinâmicos**: Uso de cores violeta/purple para destaque visual
+## 🔌 API Endpoints
+
+### Autenticação
+
+#### `POST /api/auth/registro`
+Cria uma nova conta de usuário.
+
+**Body:**
+```json
+{
+  "email": "usuario@example.com",
+  "nome": "Nome do Usuário",
+  "senha": "senha123"
+}
+```
+
+#### `POST /api/auth/login`
+Autentica um usuário e cria uma sessão.
+
+**Body:**
+```json
+{
+  "email": "usuario@example.com",
+  "senha": "senha123"
+}
+```
+
+#### `POST /api/auth/logout`
+Encerra a sessão do usuário atual.
+
+#### `GET /api/auth/me`
+Retorna informações do usuário autenticado.
+
+### Mapas
+
+#### `GET /api/mapas`
+Retorna todos os mapas do usuário autenticado.
+
+#### `POST /api/mapas`
+Cria um novo mapa.
+
+**Body:**
+```json
+{
+  "nome": "Nome do Mapa"
+}
+```
+
+#### `DELETE /api/mapas`
+Exclui um mapa e todos os seus pontos.
+
+**Body:**
+```json
+{
+  "id": 1
+}
+```
+
+### Pontos
+
+#### `GET /api/pontos?mapaId=1`
+Retorna todos os pontos de um mapa específico.
+
+**Query Parameters:**
+- `mapaId` (obrigatório): ID do mapa
+- `format` (opcional): `geojson` ou `csv` para exportação
+
+#### `POST /api/pontos`
+Adiciona um novo ponto ao mapa.
+
+**Body:**
+```json
+{
+  "mapaId": 1,
+  "nome": "Nome do Ponto",
+  "latitude": -23.5505,
+  "longitude": -46.6333,
+  "endereco": "Endereço opcional",
+  "altitude": 760.0
+}
+```
+
+#### `DELETE /api/pontos`
+Exclui um ponto ou todos os pontos de um mapa.
+
+**Body (excluir um ponto):**
+```json
+{
+  "id": 1
+}
+```
+
+**Body (excluir todos os pontos):**
+```json
+{
+  "mapaId": 1
+}
+```
+
+### Exportação
+
+#### `GET /api/mapas/export?mapaId=1&format=pdf`
+Exporta os pontos de um mapa em diferentes formatos.
+
+**Query Parameters:**
+- `mapaId` (obrigatório): ID do mapa
+- `format` (obrigatório): `geojson`, `csv` ou `pdf`
+
+## 🎨 Design e Interface
+
+A interface foi desenvolvida com foco em usabilidade e experiência do usuário:
+
+- **Tema Escuro**: Interface com fundo escuro para reduzir fadiga visual
+- **Gradientes Modernos**: Uso de cores violeta/purple para elementos de destaque
+- **Glassmorphism**: Efeito de vidro fosco em cards e elementos flutuantes
 - **Responsividade**: Layout adaptável para diferentes tamanhos de tela
-- **Glassmorphism**: Efeito de vidro fosco em elementos de destaque
-- **Feedback Visual**: Confirmações antes de deletar dados importantes
+- **Feedback Visual**: Confirmações antes de ações destrutivas
+- **Animações Suaves**: Transições e hover effects para melhor interatividade
 
----
+## 🔐 Segurança
 
-## 🔐 Recursos de Segurança
+A aplicação implementa várias medidas de segurança:
 
-- TypeScript para type-safety
-- Validação de entrada nas APIs
-- Confirmação do usuário antes de deletar dados
-- Isolamento de queries com prepared statements do SQLite
-- CORS implícito através de mesma origem
-
----
+- **Hash de Senhas**: Senhas são hasheadas com bcrypt antes de serem armazenadas
+- **Autenticação por Sessão**: Cookies HTTP-only para gerenciamento de sessões
+- **Isolamento de Dados**: Cada usuário acessa apenas seus próprios mapas
+- **Validação de Entrada**: Todas as APIs validam dados de entrada
+- **Type Safety**: TypeScript garante type-safety em todo o código
+- **Prepared Statements**: Queries SQL usam prepared statements para prevenir SQL injection
 
 ## 📝 Fluxo de Uso
 
-1. **Página Inicial**: Visualize todos os mapas criados
-2. **Criar Mapa**: Digite um nome e pressione Enter para criar novo mapa
-3. **Acessar Mapa**: Clique em um mapa para abrir a visualização
+1. **Registro/Login**: Crie uma conta ou faça login
+2. **Criar Mapa**: Na página inicial, digite um nome e crie um novo mapa
+3. **Acessar Mapa**: Clique em um mapa da lista para abri-lo
 4. **Adicionar Pontos**: Clique em qualquer lugar do mapa para adicionar um ponto
 5. **Nomear Ponto**: Digite um nome para o ponto e confirme
 6. **Buscar Pontos**: Use a barra de pesquisa para filtrar pontos por nome
-7. **Deletar Ponto**: Clique no ícone de lixeira próximo ao ponto desejado
-8. **Gerenciar Mapa**: Use os botões na barra lateral para gerenciar ou deletar o mapa inteiro
+7. **Gerenciar Pontos**: Exclua pontos individuais ou todos de uma vez
+8. **Exportar Dados**: Exporte seus dados em GeoJSON, CSV ou PDF
+9. **Compartilhar**: Compartilhe seu mapa via WhatsApp
 
----
+## 🚀 Deploy
 
-## 📦 Deployment
-
-Para fazer deploy da aplicação:
+Para fazer deploy da aplicação em produção:
 
 ```bash
 # Build para produção
@@ -244,27 +452,17 @@ npm run build
 npm start
 ```
 
-A aplicação vai ser deployada em plataformas que suportam Node.js como:
-- Vercel (que é o recomendado para Next.js)
-
-
----
-
-## 👨‍💻 Desenvolvimento
-
-A aplicação segue as melhores práticas:
-- **Component-Driven**: Componentes reutilizáveis e bem estruturados
-- **Type-Safe**: 100% tipado com TypeScript
-- **Performance**: Carregamento dinâmico de componentes pesados
-- **Clean Code**: Código limpo e bem documentado
-- **Separation of Concerns**: Separação clara entre API, componentes e estilos
-
----
+A aplicação pode ser deployada em plataformas que suportam Node.js, como:
+- **Vercel** (recomendado para Next.js)
+- **Netlify**
+- **Railway**
+- **Heroku**
+- Qualquer servidor com Node.js
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido como parte de um processo.
+Este projeto foi desenvolvido como parte de um processo de avaliação técnica.
 
 ---
 
-**Desenvolvido com ❤️ usando Next.js, React e Leaflet**
+**Desenvolvido com tecnologias modernas: Next.js, React, TypeScript e Leaflet**

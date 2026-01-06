@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Mapa = {
   id: number;
@@ -9,24 +10,21 @@ type Mapa = {
   total_pontos: number;
 };
 
-
-type Ponto = {
-  id?: number;
-  nome: string;
-  latitude: number;
-  longitude: number;
-  endereco?: string;
-  altitude?: number;
-};
-
 export default function Home() {
+  const router = useRouter();
   const [mapas, setMapas] = useState<Mapa[]>([]);
 
   useEffect(() => {
     fetch("/api/mapas", { cache: "no-store" })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401) {
+          router.push("/login");
+          return [];
+        }
+        return res.json();
+      })
       .then(setMapas);
-  }, []);
+  }, [router]);
 
 
   async function excluirMapa(id: number) {
