@@ -3,7 +3,7 @@
 Uma plataforma web moderna e completa para gerenciamento de mapas geográficos com pontos de interesse. Permite criar múltiplos mapas personalizados, adicionar pontos interativamente, gerenciar dados geográficos e exportar em diversos formatos.
 
 ![Tela Inicial](./img/img1.png)
-
+deploy da aplicação : https://mapasnerd.vercel.app/
 ## 📋 Índice
 
 - [Sobre o Projeto](#-sobre-o-projeto)
