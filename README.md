@@ -10,7 +10,7 @@ Para testar, use o seguinte login de teste:
 
 E-mail: user@email.com
 
-Senha: 12345678
+Senha: 123456
 ## 📋 Índice
 
 - [Sobre o Projeto](#-sobre-o-projeto)
